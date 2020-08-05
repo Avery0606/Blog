@@ -1,12 +1,12 @@
 'use strict';
 
 const Service = require("egg").Service;
-
+const utility = require("utility");//密码加密
 class serviceRegister extends Service{
     async insertDatabase(){
-        const telephone = this.ctx.request.body.telephone;
-        const username = this.ctx.request.body.username;
-        const password = this.ctx.request.body.password;
+        var telephone = this.ctx.request.body.telephone;
+        var username = this.ctx.request.body.username;
+        var password = this.ctx.request.body.password;
         //通过用户名查询
         const judgeResult1 = await this.app.mysql.select('register',{
             where:{
@@ -35,7 +35,7 @@ class serviceRegister extends Service{
                 message:'该电话号码已被注册！'
             }
         }
-
+        password = utility.md5(password);
         let res = await this.app.mysql.insert('register',{telephone,username,password});
         return{
             code:1,

@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="qingchugeshi" unicode="&#59603;" d="M970.105263-74.105263H53.894737V410.947368h916.210526v-485.052631zM107.789474-20.210526h808.421052v377.263158H107.789474v-377.263158zM970.105263 357.052632H53.894737V572.631579h301.810526V842.105263h307.2v-269.473684H970.105263v-215.578947zM107.789474 410.947368h808.421052V518.736842h-301.810526V788.210526H409.6v-269.473684H107.789474v-107.789474zM700.631579 249.263158v-323.368421h53.894737v323.368421h-53.894737z m-323.368421-269.473684h53.894737v107.789473H377.263158v-107.789473z m-107.789474-53.894737h53.894737v269.473684H269.473684v-269.473684z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

@@ -8,7 +8,6 @@ class controllerLogin extends Controller{
     }
     async judgeLogin(){
         let result = await this.service.serviceJudgeLogin.serviceJudgeLogin();//service执行判断
-        console.log(result)
         this.ctx.body = result;
     }
     

@@ -11,7 +11,10 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-console': 'off',//禁止console报错检查
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-irregular-whitespace':'off',//禁止空格缩进检查
+    'no-unused-vars':'off',//禁用声明但未使用报错检查
+    'no-mixed-spaces-and-tabs':'off',
   }
 }

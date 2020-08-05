@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import axios from 'axios'
   export default {
     data() {
         var validatePass = (rule, value, callback) => {//自定义校验规则
@@ -78,9 +77,9 @@ import axios from 'axios'
         this.$refs[formName].validate((valid) => {
           if (valid) {
             console.log(this.ruleForm)
-            axios({
+            this.$axios({
                 method:'post',
-                url:'http://127.0.0.1:7001/commit',
+                url:'/api/commit',
                 data:{
                     username:this.ruleForm.username,
                     password:this.ruleForm.pass,

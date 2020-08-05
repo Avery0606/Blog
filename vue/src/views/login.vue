@@ -7,7 +7,7 @@
         <el-button class="login_button" @click="login()" size='medium' round>登录</el-button> -->
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px">
             <el-form-item label="" prop="username">
-                <el-input v-model="ruleForm.username" placeholder="请输入用户名或手机号码"></el-input>
+                <el-input v-model="ruleForm.username" placeholder="请输入用户名或手机号码" ></el-input>
             </el-form-item>
             <el-form-item label="" prop="password" >
                 <el-input  type="password" v-model="ruleForm.password" placeholder="请输入密码" autocomplete="off" show-password></el-input>
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import {setCookie,getCookie} from '@/assets/js/cookie.js'
 export default {
     data(){
@@ -48,33 +47,49 @@ export default {
     },
     methods:{
         login(formName){
-            console.log(this.ruleForm)
+            // console.log(this.ruleForm)
             this.$refs[formName].validate((valid) => {
             if (valid) {
-                axios({
+                this.$axios({
                     method:'post',
-                    url:'http://127.0.0.1:7001/login',
+                    url:'/api/login',
                     data:{
                         username:this.ruleForm.username,
                         password:this.ruleForm.password
                     }
                 })
                 .then(res=>{
-                    console.log(res)
                     if(res.data.code == 1)
                     {
                         //登陆成功
-                        setCookie('username',this.ruleForm.username,1000*60)
-                        setTimeout(function(){
-                            this.$router.push('/home')
-                        }.bind(this),1000)
-                        alert(res.data.message);
+                        this.$axios({
+                            method:'get',
+                            url:'/api/getData/getUsername',
+                            params: {
+                                user:this.ruleForm.username
+                            }
+                        }).then(res=>{
+                            setCookie('username',res.data,1000*60)
+                        })
+                        this.$message({
+                            message:res.data.message + '   3秒后跳转至主页...',
+                            type:'success',
+                            showClose:true,
+                            onClose:()=>{
+                                this.$router.push('/home')
+                            }
+                        })
                     }
                     else 
                     {
                         //登陆失败
                         this.ruleForm.password = '';
-                        alert(res.data.message);
+                        this.$message({
+                            message:res.data.message,
+                            type:'error',
+                            showClose:true,
+                        })
+                        // alert(res.data.message);
                     }
                 })
             }else {

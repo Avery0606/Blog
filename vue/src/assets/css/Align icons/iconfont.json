@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3216136",
+      "name": "居中对齐",
+      "font_class": "icon--",
+      "unicode": "e73e",
+      "unicode_decimal": 59198
+    },
+    {
+      "icon_id": "12550412",
+      "name": "左对齐",
+      "font_class": "zuoduiqi",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "12550413",
+      "name": "右对齐",
+      "font_class": "youduiqi",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "12550415",
+      "name": "两端对齐，末行居中对齐",
+      "font_class": "liangduanduiqimohangjuzhongduiqi",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    }
+  ]
+}

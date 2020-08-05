@@ -1,12 +1,12 @@
 'use strict';
 
 const Service = require("egg").Service;
-
+const utility = require("utility");//密码加密
 class serviceJudgeLogin extends Service{
     async serviceJudgeLogin(){
-        const account = this.ctx.request.body.username
-        const password = this.ctx.request.body.password
-        console.log(account+'\n'+password);
+        var account = this.ctx.request.body.username
+        var password = this.ctx.request.body.password
+        password = utility.md5(password);
         //通过用户名查询
         const judgeResult1 = await this.app.mysql.select('register',{
             where:{
