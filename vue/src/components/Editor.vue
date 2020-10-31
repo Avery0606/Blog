@@ -1,12 +1,12 @@
 <template>
   <div class="content-body">
     <div class="toolbar"><!--工具栏-->
-      <button @click="Bold" id="Bold" title="加粗">B</button>
-      <button @click="Italic" id="Italic" title="斜体">I</button>
-      <button @click="Underline" id="Underline" title="下划线">U</button>
-      <button @click="Superscript" id="Superscript" title="上角标">x²</button>
-      <button @click="Subscript" id="Subscript" title="下角标">x₂</button>
-      <button @click="BackColor" id="BackColor" title="突出显示文本">A</button>
+      <button @click="Bold" id="Bold" title="加粗" v-bind:class="{Bolding:tools.Bold}">B</button>
+      <button @click="Italic" id="Italic" title="斜体" v-bind:class="{Italicing:tools.Italic}">I</button>
+      <button @click="Underline" id="Underline" title="下划线" v-bind:class="{Underlining:tools.Underline}">U</button>
+      <button @click="Superscript" id="Superscript" title="上角标" v-bind:class="{Superscripting:tools.Superscript}">x²</button>
+      <button @click="Subscript" id="Subscript" title="下角标" v-bind:class="{Subscripting:tools.Subscript}">x₂</button>
+      <button @click="BackColor" id="BackColor" title="突出显示文本" v-bind:class="{BackColoring:tools.BackColor}">A</button>
       <!-- <button @click="Undo" id="Undo">后退</button>
       <button @click="Redo" id="Redo">前进</button> -->
       <div class="splitline"></div>
@@ -256,64 +256,27 @@ import { read } from 'fs'
       },
       Bold:function(){//字体加粗
         document.execCommand('bold',false,null);
-        let dom = document.getElementById('Bold');
-        if(!this.tools.Bold){
-          dom.style ="color:rgb(64,158,255);font-weight:bold";
-        }else{
-          dom.style ="color:normal;font-weight:normal";
-        }
         this.tools.Bold = !this.tools.Bold
       },
       Italic:function(){//斜体
         document.execCommand('italic',false,null);
-        let dom = document.getElementById('Italic');
-        if(!this.tools.Italic){
-          dom.style ="font-style:italic;color:rgb(64,158,255);font-weight:bold";
-        }else{
-          dom.style ="font-style:normal;color:normal;font-weight:normal";
-        }
         this.tools.Italic = !this.tools.Italic
       },
       Underline:function(){//下划线
         document.execCommand('underline',false,null);
-        let dom = document.getElementById('Underline');
-        if(!this.tools.Underline){
-          dom.style ="text-decoration:underline;color:rgb(64,158,255);font-weight:bold";
-        }else{
-          dom.style ="text-decoration:none;color:normal;font-weight:normal";
-        }
         this.tools.Underline = !this.tools.Underline
       },
       Superscript:function(){//上角标
         document.execCommand('superscript',false,null);
-        let dom = document.getElementById('Superscript');
-        if(!this.tools.Superscript){
-          dom.style ="color:rgb(64,158,255);font-weight:bold;";
-        }else{
-          dom.style ="color:normal;font-weight:normal;";
-        }
         this.tools.Superscript = !this.tools.Superscript
       },
       Subscript:function(){//下角标
         document.execCommand('subscript',false,null);
-        let dom = document.getElementById('Subscript');
-        if(!this.tools.Subscript){
-          dom.style ="color:rgb(64,158,255);font-weight:bold;";
-        }else{
-          dom.style ="color:normal;font-weight:normal;";
-        }
         this.tools.Subscript = !this.tools.Subscript
       },
       BackColor:function(){//高亮
-        let dom = document.getElementById('BackColor');
-        if(!this.tools.BackColor){
-          document.execCommand('backColor',false,'rgb(255,255,0)');
-          dom.style ="color:rgb(64,158,255);font-weight:bold;";
-        }else{
-          document.execCommand('backColor',false,'rgb(255,255,255)'); 
-          dom.style ="color:normal;font-weight:normal;";
-        }
-        this.tools.BackColor = !this.tools.BackColor
+        (this.tools.BackColor?document.execCommand('backColor',false,'rgb(255,255,255)'):document.execCommand('backColor',false,'rgb(255,255,0)'));
+        this.tools.BackColor = !this.tools.BackColor;
       },
       Typeface:function(){//字体
         document.execCommand('fontName',false,this.tools.Typeface)
@@ -445,4 +408,32 @@ import { read } from 'fs'
   .content-body .writearea:focus{
     border-color: rgb(40, 144, 248);
   }
+
+  .Bolding{/*加粗按钮选中*/
+    color:rgb(64,158,255);
+    font-weight:bold;
+  }
+  .Italicing{/*斜体按钮选中*/
+      font-style:italic;
+      color:rgb(64,158,255);
+      font-weight:bold;
+  }
+  .Underlining{/*下划线按钮选中*/
+    text-decoration:underline;
+    color:rgb(64,158,255);
+    font-weight:bold;
+  }
+  .Superscripting{/*上角标按钮选中*/
+    color:rgb(64,158,255);
+    font-weight:bold;
+  }
+  .Subscripting{/*下角标按钮选中*/
+    color:rgb(64,158,255);
+    font-weight:bold;
+  }
+  .BackColoring{/*高亮按钮选中*/
+    color:rgb(64,158,255);
+    font-weight:bold;
+  }
+
 </style>

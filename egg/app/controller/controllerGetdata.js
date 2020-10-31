@@ -15,6 +15,15 @@ class controllerGetdata extends Controller{
         let result = await this.service.serviceGetdata.servicegetThisArticle();
         this.ctx.body = result;
     }
+    async getThisLikenum(){
+        let result = await this.service.serviceGetdata.servicegetThisLikenum();
+        this.ctx.body = result;
+    }
+
+    async getThisLikeState(){
+        let result = await this.service.serviceGetdata.servicegetThisLikeState();
+        this.ctx.body = result;
+    }
     
 }
 

@@ -29,12 +29,13 @@
         </div>
       </div>
       <div class="articles">
-        <div v-bind:key="item" v-for="item of article_data" class="article" @click="goToArticle(item.id)">
+        <div v-bind:key="item" v-for="item of article_data" class="article" @click="goToArticle(item.id)" :id="item.id">
           <div id="item_title">{{item.title}}</div>
           <div id="item_info">
             <div id="item_username">{{item.username}}</div>
             <div id="item_differ">·{{item.differ}}</div>
           </div>
+          <router-link :to="{path:`/post/${item.id}` }" target="_blank" style="display:none" ></router-link>
         </div>
       </div>
     </div>
@@ -126,7 +127,9 @@ export default {
       return temp;
     },
     goToArticle:function(id){
-      this.$router.push(`/post/${id}`);
+      let dom = document.getElementById(`${id}`);
+      let cd = dom.getElementsByTagName('a')[0];
+      cd.click();
     }
   }
 }

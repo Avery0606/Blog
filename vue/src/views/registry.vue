@@ -6,7 +6,7 @@
             <el-input v-model="ruleForm.username" ></el-input>
         </el-form-item>
         <el-form-item label="手机号码" prop="telephone" >
-            <el-input v-model="ruleForm.telephone"></el-input>
+            <el-input v-model="ruleForm.telephone" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass" >
             <el-input  type="password" v-model="ruleForm.pass" autocomplete="off" show-password></el-input>

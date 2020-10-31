@@ -10,8 +10,11 @@ module.exports = app => {
   router.post('/commit',controller.controllerRegister.getInput);//点击注册后，执行的方法
   router.post('/login',controller.controllerLogin.judgeLogin);//点击登录后执行
   router.post('/publish',controller.controllerPublish.publish);//点击发布后执行
+  router.post('/update/updateLikenum',controller.controllerUpdate.updateLikenum);//更新文章点赞数量
 
   router.get('/getData/getUsername',controller.controllerGetdata.getUsername)//获取用户名字
   router.get('/getData/getAllArticle',controller.controllerGetdata.getAllArticle)//获取所有文章
   router.get('/getData/getThisArticle',controller.controllerGetdata.getThisArticle)//获取指定文章
+  router.get('/getData/getThisLikenum',controller.controllerGetdata.getThisLikenum)//获取指定文章的点赞数量
+  router.get('/getData/getThisLikeState',controller.controllerGetdata.getThisLikeState)//判定这篇文章是否被用户点赞
 };

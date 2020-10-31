@@ -8,12 +8,14 @@ class servicePublish extends Service{
         let title = data.title;
         let article = data.article;
         let date = data.date;
-        let res = this.app.mysql.insert('article',{username,title,article,date});
-        return{
+        const conn = await this.app.mysql.beginTransaction();
+        var res = await this.app.mysql.insert('article',{username,title,article,date});
+        if(res.affectedRows == 1)return{
             code:1,
             msg:'发布成功',
             res
         }
+        
     }
 }
 

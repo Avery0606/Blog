@@ -33,6 +33,27 @@ class serviceGetdata extends Service{
         });
         return result;
     }
+    async servicegetThisLikenum(){
+        let id = this.ctx.query.id;
+        let result = await this.app.mysql.select('article_likenum',{
+            where:{
+                id:id
+            }
+        });
+        return result;
+    }
+
+    async servicegetThisLikeState(){
+        let id = this.ctx.query.id;
+        let username = this.ctx.query.username;
+        let result = await this.app.mysql.select('account_like',{
+            where:{
+                id:id,
+                username:username,
+            }
+        })
+        return result.length == 1;
+    }
 }
 
 module.exports = serviceGetdata;

@@ -17,6 +17,7 @@
 
 <script>
 import { delCookie } from '@/assets/js/cookie.js'
+import { getCookie } from '@/assets/js/cookie.js'
 export default {
   name: 'Top',
   props: ['msg'],
@@ -34,6 +35,7 @@ export default {
       quit:function(){
           /*删除cookie*/
           delCookie('username')
+          console.log(getCookie('username'))
           this.$router.push('/login')
       }
   }

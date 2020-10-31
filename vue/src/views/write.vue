@@ -57,7 +57,7 @@ export default {
             if(flag){//当内容校验无误后进行
                 axios({
                     method:'post',
-                    url:'http://127.0.0.1:7001/publish',
+                    url:'/api/publish',
                     data:data,
                 }).then(res=>{
                     let code = res.data.code;
@@ -70,6 +70,13 @@ export default {
                             onClose:()=>{
                                 this.$router.push('/home')
                             }
+                        })
+                    }
+                    if(code === -1){
+                        this.$message({
+                            message:msg,
+                            type:'fail',
+                            showClose:true,
                         })
                     }
                     
